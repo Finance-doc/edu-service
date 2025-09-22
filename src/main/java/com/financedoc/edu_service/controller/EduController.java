@@ -1,6 +1,7 @@
 package com.financedoc.edu_service.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class EduController {
 
     @GetMapping("/test")
-    public String test() {
-        return "Edu Service Test OK";
+    public String test(@RequestHeader("X-User-Email") String email) {
+        return "Edu Service Test OK & X-User-Email = "+ email;
     }
 
 }
