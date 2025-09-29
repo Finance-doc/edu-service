@@ -5,6 +5,11 @@ spring:
   application:
     name: edu-service
 
+  datasource:
+    url: ${EDU_DATASOURCE_URL}
+    username: ${EDU_DATASOURCE_USERNAME}
+    password: ${EDU_DATASOURCE_PASSWORD}
+
 management:
   endpoints:
     web:
