@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: edu-db
+  namespace: db
+spec:
+  serviceName: edu-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edu-db
+  template:
+    metadata:
+      labels:
+        app: edu-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: edudb
+            - name: POSTGRES_USER
+              value: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: edu-db-secret
+                  key: POSTGRES_PASSWORD
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata  # 서브디렉터리
+          volumeMounts:
+            - name: edu-db-storage
+              mountPath: /var/lib/postgresql/data  # PVC 루트 마운트
+  volumeClaimTemplates:
+    - metadata:
+        name: edu-db-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 10Gi
+        storageClassName: nks-block-storage

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edu-service-service
+spec:
+  selector:
+    app: edu-service
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30003
+  type: NodePort

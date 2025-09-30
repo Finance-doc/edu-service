@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edu-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: edu-service
+  template:
+    metadata:
+      labels:
+        app: edu-service
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: edu-service
+          image: financedoc.kr.ncr.ntruss.com/edu-service:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: EDU_DATASOURCE_URL
+              value: jdbc:postgresql://edu-db.db.svc.cluster.local:5432/edudb
+            - name: EDU_DATASOURCE_USERNAME
+              value: user
+            - name: EDU_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: edu-db-secret
+                  key: EDU_DATASOURCE_PASSWORD
