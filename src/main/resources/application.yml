@@ -1,14 +1,13 @@
 server:
   port: 8080
+  servlet:
+    context-path: /edu
 
 spring:
   application:
     name: edu-service
-
-  datasource:
-    url: ${EDU_DATASOURCE_URL}
-    username: ${EDU_DATASOURCE_USERNAME}
-    password: ${EDU_DATASOURCE_PASSWORD}
+  profiles:
+    active: local
 
 management:
   endpoints:
