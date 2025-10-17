@@ -12,5 +12,5 @@ public class Keyword {
     private String term;
 
     @Column(columnDefinition = "TEXT")
-    private String desc;
+    private String description;
 }
