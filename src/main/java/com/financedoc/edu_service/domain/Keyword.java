@@ -3,6 +3,7 @@ package com.financedoc.edu_service.domain;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "keyword")
 public class Keyword {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
