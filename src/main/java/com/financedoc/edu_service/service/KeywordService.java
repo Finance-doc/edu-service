@@ -15,8 +15,8 @@ public class KeywordService {
 
     public KeywordResponse getRandomKeyword(Long keywordId){
         Keyword keyword = (keywordId == null)
-                ? keywordRepository.findyRandomKeyword()
-                : keywordRepository.findyRandomKeywordExcept(keywordId);
+                ? keywordRepository.findRandomKeyword()
+                : keywordRepository.findRandomKeywordExcept(keywordId);
 
         return KeywordResponse.builder()
                 .keywordId(keyword.getKeywordId())
