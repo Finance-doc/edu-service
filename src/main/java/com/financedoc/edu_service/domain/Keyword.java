@@ -1,8 +1,10 @@
 package com.financedoc.edu_service.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "keyword")
 public class Keyword {
     @Id

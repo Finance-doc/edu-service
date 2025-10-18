@@ -2,12 +2,10 @@ package com.financedoc.edu_service.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/edu")
-public class EduController {
+public class EduTestController {
 
     @GetMapping("/test")
     public String test(
