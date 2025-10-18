@@ -13,4 +13,8 @@ public class Keyword {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    private String source;
+
+    private String link;
 }
